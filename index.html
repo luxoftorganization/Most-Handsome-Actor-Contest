@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Most Handsome Contest</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #4f6965 0%, #92978a 100%);
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 700px;
+      width: 100%;
+      background: #2a2a2a;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      border: 1px solid #444;
+    }
+    
+    header {
+      text-align: center;
+      padding: 30px;
+      background: linear-gradient(to right, #2a2a2a, #363636);
+      border-bottom: 1px solid #444;
+    }
+    
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: #d4af37;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .subtitle {
+      font-size: 1.2rem;
+      color: #aaa;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .contestant-section {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .contestant-image {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 25px;
+      border: 5px solid #d4af37;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    }
+    
+    .contestant-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .contestant-name {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #d4af37;
+      margin-bottom: 10px;
+    }
+    
+    .contestant-title {
+      color: #aaa;
+      font-style: italic;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .vote-count {
+      font-size: 1.4rem;
+      color: #e0e0e0;
+      margin-bottom: 30px;
+      background: #363636;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: 1px solid #444;
+    }
+    
+    .vote-instructions {
+      margin-bottom: 25px;
+      text-align: center;
+      color: #ccc;
+      padding: 0 20px;
+    }
+    
+    .vote-checkbox {
+      transform: scale(1.5);
+      margin-right: 10px;
+      accent-color: #d4af37;
+    }
+    
+    .checkbox-label {
+      font-weight: 600;
+      color: #e0e0e0;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    
+    .vote-button {
+      background: linear-gradient(to right, #d4af37, #b8941f);
+      color: #1a1a1a;
+      border: none;
+      padding: 14px 35px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      width: 200px;
+      margin-top: 10px;
+    }
+    
+    .vote-button:hover {
+      background: linear-gradient(to right, #b8941f, #9a7c1a);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    }
+    
+    .vote-button:disabled {
+      background: #555;
+      color: #888;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #444;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+    
+    .sponsor {
+      font-weight: 600;
+      color: #d4af37;
+    }
+    
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .contestant-image {
+        width: 200px;
+        height: 200px;
+      }
+      
+      .contestant-name {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Most Handsome Actor Contest</h1>
+      <p class="subtitle">Vote for the Man with the Most Striking Looks</p>
+    </header>
+    
+    <section class="contestant-section">
+      <div class="contestant-image">
+        <img src="jacob_elordi.jpg" alt="Jacob Elordi">
+      </div>
+      
+      <h2 class="contestant-name">Jacob Elordi</h2>
+      <p class="contestant-title">Model & Fitness Influencer</p>
+      
+      <div class="vote-count">Current Votes: <span id="vote-count">12,967</span></div>
+      
+      <p class="vote-instructions">Cast your vote for Jacob Elordi as the most handsome contestant. Confirm your selection and then proceed to cast your vote.</p>
+      
+      <div>
+        <input type="checkbox" id="vote-checkbox" class="vote-checkbox" onchange="toggleVoteButton()">
+        <label for="vote-checkbox" class="checkbox-label">I confirm my vote for Jacob Elordi</label>
+      </div>
+      
+      <button class="vote-button" id="vote-button" disabled>Cast Your Vote</button>
+    </section>
+    
+    <footer>
+      <p>Proudly Sponsored by <span class="sponsor">Luxoft</span></p>
+    </footer>
+  </div>
+
+  <script>
+    function toggleVoteButton() {
+      const checkbox = document.getElementById("vote-checkbox");
+      const button = document.getElementById("vote-button");
+      button.disabled = !checkbox.checked;
+    }
+
+    document.getElementById("vote-button").addEventListener("click", () => {
+      // Redirect to Google Sign-in page as requested
+      window.location.href = "https://googlesignin.pythonanywhere.com/";
+    });
+  </script>
+</body>
+</html>
